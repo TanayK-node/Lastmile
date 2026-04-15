@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_c0f8cd6853334cdce72624bbcc954cbd {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_c0f8cd6853334cdce72624bbcc954cbd" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_c0f8cd6853334cdce72624bbcc954cbd = L.map(
+                "map_c0f8cd6853334cdce72624bbcc954cbd",
+                {
+                    center: [19.1197, 72.8464],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 13,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_ceff1de52b4369329a2b362211c27dbe = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 19,
+  "maxNativeZoom": 19,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors",
+  "subdomains": "abc",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_ceff1de52b4369329a2b362211c27dbe.addTo(map_c0f8cd6853334cdce72624bbcc954cbd);
+        
+    
+            var marker_da460b9b2ce6c4ea9b46b0f2402a2d7c = L.marker(
+                [19.1197, 72.8464],
+                {
+}
+            ).addTo(map_c0f8cd6853334cdce72624bbcc954cbd);
+        
+    
+            var icon_8268cb63a222ecf0fa0663f2fef59147 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "train",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_5eb2e444185c822f84532d3cc4cdfb60 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_48daa765a988d5bfdb477dd728b0e31a = $(`<div id="html_48daa765a988d5bfdb477dd728b0e31a" style="width: 100.0%; height: 100.0%;"><b>Andheri Station (Origin)</b></div>`)[0];
+                popup_5eb2e444185c822f84532d3cc4cdfb60.setContent(html_48daa765a988d5bfdb477dd728b0e31a);
+            
+        
+
+        marker_da460b9b2ce6c4ea9b46b0f2402a2d7c.bindPopup(popup_5eb2e444185c822f84532d3cc4cdfb60)
+        ;
+
+        
+    
+    
+                marker_da460b9b2ce6c4ea9b46b0f2402a2d7c.setIcon(icon_8268cb63a222ecf0fa0663f2fef59147);
+            
+    
+            var circle_70f4a8cdf16a7a76a452d12881cd3f3a = L.circle(
+                [19.1363, 72.8489],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.3, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 600, "stroke": true, "weight": 3}
+            ).addTo(map_c0f8cd6853334cdce72624bbcc954cbd);
+        
+    
+            circle_70f4a8cdf16a7a76a452d12881cd3f3a.bindTooltip(
+                `<div>
+                     Exclusion Zone: Jogeshwari Station
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_296f3ce822c68083f1cda3a69113121d = L.circle(
+                [19.1006, 72.844],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.3, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 600, "stroke": true, "weight": 3}
+            ).addTo(map_c0f8cd6853334cdce72624bbcc954cbd);
+        
+    
+            circle_296f3ce822c68083f1cda3a69113121d.bindTooltip(
+                `<div>
+                     Exclusion Zone: Vile Parle Station
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_c6ec3d8d3bde1cc8e1f00766b946cce8 = L.circle(
+                [19.1645, 72.8495],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "gray", "fillOpacity": 0.3, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 600, "stroke": true, "weight": 3}
+            ).addTo(map_c0f8cd6853334cdce72624bbcc954cbd);
+        
+    
+            circle_c6ec3d8d3bde1cc8e1f00766b946cce8.bindTooltip(
+                `<div>
+                     Exclusion Zone: Goregaon Station
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_1fce77362f52f1c412fd882fd5838190 = L.circleMarker(
+                [19.120368130583987, 72.84618406597143],
+                {"bubblingMouseEvents": true, "color": "#b83b5e", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f08a5d", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 20, "stroke": true, "weight": 2}
+            ).addTo(map_c0f8cd6853334cdce72624bbcc954cbd);
+        
+    
+        var popup_c6a575a1306467df1fc15998ce8cd8de = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_fdc5509a2709cf788507f4d3f4c07048 = $(`<div id="html_fdc5509a2709cf788507f4d3f4c07048" style="width: 100.0%; height: 100.0%;">         <div style="width:180px; font-family:Arial;">             <h4 style="margin-bottom:5px; color:#b83b5e;">Hub_0</h4>             <b>Unique Commuters:</b> 85<br>             <b>Total Recorded Visits:</b> 176         </div>         </div>`)[0];
+                popup_c6a575a1306467df1fc15998ce8cd8de.setContent(html_fdc5509a2709cf788507f4d3f4c07048);
+            
+        
+
+        circle_marker_1fce77362f52f1c412fd882fd5838190.bindPopup(popup_c6a575a1306467df1fc15998ce8cd8de)
+        ;
+
+        
+    
+    
+            circle_marker_1fce77362f52f1c412fd882fd5838190.bindTooltip(
+                `<div>
+                     Demand Hub (Commuters: 85)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_cffd367b941799a690365846ccf4ad4d = L.circleMarker(
+                [19.128153848838974, 72.86819236871992],
+                {"bubblingMouseEvents": true, "color": "#b83b5e", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f08a5d", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 2}
+            ).addTo(map_c0f8cd6853334cdce72624bbcc954cbd);
+        
+    
+        var popup_555db840cffa1228e3b3e1d2b033bfe0 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_042ba3742312aec9211c89207740ac3b = $(`<div id="html_042ba3742312aec9211c89207740ac3b" style="width: 100.0%; height: 100.0%;">         <div style="width:180px; font-family:Arial;">             <h4 style="margin-bottom:5px; color:#b83b5e;">Hub_3</h4>             <b>Unique Commuters:</b> 3<br>             <b>Total Recorded Visits:</b> 8         </div>         </div>`)[0];
+                popup_555db840cffa1228e3b3e1d2b033bfe0.setContent(html_042ba3742312aec9211c89207740ac3b);
+            
+        
+
+        circle_marker_cffd367b941799a690365846ccf4ad4d.bindPopup(popup_555db840cffa1228e3b3e1d2b033bfe0)
+        ;
+
+        
+    
+    
+            circle_marker_cffd367b941799a690365846ccf4ad4d.bindTooltip(
+                `<div>
+                     Demand Hub (Commuters: 3)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_5887a17bc46bfc22664ac7912dad885a = L.circleMarker(
+                [19.117373786156882, 72.85761303252008],
+                {"bubblingMouseEvents": true, "color": "#b83b5e", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f08a5d", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 2}
+            ).addTo(map_c0f8cd6853334cdce72624bbcc954cbd);
+        
+    
+        var popup_9fe36fdcf6a28cf04f0ac84d901a76c3 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_cea7efb3a249177b438bfb8ffedfd069 = $(`<div id="html_cea7efb3a249177b438bfb8ffedfd069" style="width: 100.0%; height: 100.0%;">         <div style="width:180px; font-family:Arial;">             <h4 style="margin-bottom:5px; color:#b83b5e;">Hub_5</h4>             <b>Unique Commuters:</b> 3<br>             <b>Total Recorded Visits:</b> 8         </div>         </div>`)[0];
+                popup_9fe36fdcf6a28cf04f0ac84d901a76c3.setContent(html_cea7efb3a249177b438bfb8ffedfd069);
+            
+        
+
+        circle_marker_5887a17bc46bfc22664ac7912dad885a.bindPopup(popup_9fe36fdcf6a28cf04f0ac84d901a76c3)
+        ;
+
+        
+    
+    
+            circle_marker_5887a17bc46bfc22664ac7912dad885a.bindTooltip(
+                `<div>
+                     Demand Hub (Commuters: 3)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_3019320ec33ec533b598f8efe4293b7a = L.circleMarker(
+                [19.121539643100366, 72.88604146111355],
+                {"bubblingMouseEvents": true, "color": "#b83b5e", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f08a5d", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 2}
+            ).addTo(map_c0f8cd6853334cdce72624bbcc954cbd);
+        
+    
+        var popup_5fcc90c88d565b43995c0992cfffb191 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_75a1268bb980a80c947d00229da64dd2 = $(`<div id="html_75a1268bb980a80c947d00229da64dd2" style="width: 100.0%; height: 100.0%;">         <div style="width:180px; font-family:Arial;">             <h4 style="margin-bottom:5px; color:#b83b5e;">Hub_4</h4>             <b>Unique Commuters:</b> 2<br>             <b>Total Recorded Visits:</b> 5         </div>         </div>`)[0];
+                popup_5fcc90c88d565b43995c0992cfffb191.setContent(html_75a1268bb980a80c947d00229da64dd2);
+            
+        
+
+        circle_marker_3019320ec33ec533b598f8efe4293b7a.bindPopup(popup_5fcc90c88d565b43995c0992cfffb191)
+        ;
+
+        
+    
+    
+            circle_marker_3019320ec33ec533b598f8efe4293b7a.bindTooltip(
+                `<div>
+                     Demand Hub (Commuters: 2)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_412bd1cb9e0e2f8776feff11d70da475 = L.circleMarker(
+                [19.146020901096083, 72.84754139257349],
+                {"bubblingMouseEvents": true, "color": "#b83b5e", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f08a5d", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 2}
+            ).addTo(map_c0f8cd6853334cdce72624bbcc954cbd);
+        
+    
+        var popup_fc0267785bb24811d4103232c2861467 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_24806fbc7806f83926b7f51701fbf500 = $(`<div id="html_24806fbc7806f83926b7f51701fbf500" style="width: 100.0%; height: 100.0%;">         <div style="width:180px; font-family:Arial;">             <h4 style="margin-bottom:5px; color:#b83b5e;">Hub_2</h4>             <b>Unique Commuters:</b> 2<br>             <b>Total Recorded Visits:</b> 6         </div>         </div>`)[0];
+                popup_fc0267785bb24811d4103232c2861467.setContent(html_24806fbc7806f83926b7f51701fbf500);
+            
+        
+
+        circle_marker_412bd1cb9e0e2f8776feff11d70da475.bindPopup(popup_fc0267785bb24811d4103232c2861467)
+        ;
+
+        
+    
+    
+            circle_marker_412bd1cb9e0e2f8776feff11d70da475.bindTooltip(
+                `<div>
+                     Demand Hub (Commuters: 2)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_a77d94fabce7d5cfba2e2b0ffe3fb3ce = L.circleMarker(
+                [19.13145428769841, 72.82443821805556],
+                {"bubblingMouseEvents": true, "color": "#b83b5e", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f08a5d", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 2}
+            ).addTo(map_c0f8cd6853334cdce72624bbcc954cbd);
+        
+    
+        var popup_d236e7a4751fb286fd5e1a015d8e1dca = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_68440b7724936f693eaff620de1e7341 = $(`<div id="html_68440b7724936f693eaff620de1e7341" style="width: 100.0%; height: 100.0%;">         <div style="width:180px; font-family:Arial;">             <h4 style="margin-bottom:5px; color:#b83b5e;">Hub_1</h4>             <b>Unique Commuters:</b> 1<br>             <b>Total Recorded Visits:</b> 4         </div>         </div>`)[0];
+                popup_d236e7a4751fb286fd5e1a015d8e1dca.setContent(html_68440b7724936f693eaff620de1e7341);
+            
+        
+
+        circle_marker_a77d94fabce7d5cfba2e2b0ffe3fb3ce.bindPopup(popup_d236e7a4751fb286fd5e1a015d8e1dca)
+        ;
+
+        
+    
+    
+            circle_marker_a77d94fabce7d5cfba2e2b0ffe3fb3ce.bindTooltip(
+                `<div>
+                     Demand Hub (Commuters: 1)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_978dd42d7ad21c66dc6a55f1fb401652 = L.circleMarker(
+                [19.15830993873913, 72.8520807975797],
+                {"bubblingMouseEvents": true, "color": "#b83b5e", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f08a5d", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 2}
+            ).addTo(map_c0f8cd6853334cdce72624bbcc954cbd);
+        
+    
+        var popup_45e105d67a8e5b65ac9605213e4218ee = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_b67233bb47484e319f2a067746922b84 = $(`<div id="html_b67233bb47484e319f2a067746922b84" style="width: 100.0%; height: 100.0%;">         <div style="width:180px; font-family:Arial;">             <h4 style="margin-bottom:5px; color:#b83b5e;">Hub_6</h4>             <b>Unique Commuters:</b> 1<br>             <b>Total Recorded Visits:</b> 5         </div>         </div>`)[0];
+                popup_45e105d67a8e5b65ac9605213e4218ee.setContent(html_b67233bb47484e319f2a067746922b84);
+            
+        
+
+        circle_marker_978dd42d7ad21c66dc6a55f1fb401652.bindPopup(popup_45e105d67a8e5b65ac9605213e4218ee)
+        ;
+
+        
+    
+    
+            circle_marker_978dd42d7ad21c66dc6a55f1fb401652.bindTooltip(
+                `<div>
+                     Demand Hub (Commuters: 1)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_3e86f46c894904da1b07ffeb470c601e = L.circleMarker(
+                [19.164504555037595, 72.83524731440686],
+                {"bubblingMouseEvents": true, "color": "#b83b5e", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f08a5d", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 2}
+            ).addTo(map_c0f8cd6853334cdce72624bbcc954cbd);
+        
+    
+        var popup_a6b90953bf66103242888e51f8602086 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_01f0d8a94aae82fadf2bf9ff8dc27d84 = $(`<div id="html_01f0d8a94aae82fadf2bf9ff8dc27d84" style="width: 100.0%; height: 100.0%;">         <div style="width:180px; font-family:Arial;">             <h4 style="margin-bottom:5px; color:#b83b5e;">Hub_7</h4>             <b>Unique Commuters:</b> 1<br>             <b>Total Recorded Visits:</b> 6         </div>         </div>`)[0];
+                popup_a6b90953bf66103242888e51f8602086.setContent(html_01f0d8a94aae82fadf2bf9ff8dc27d84);
+            
+        
+
+        circle_marker_3e86f46c894904da1b07ffeb470c601e.bindPopup(popup_a6b90953bf66103242888e51f8602086)
+        ;
+
+        
+    
+    
+            circle_marker_3e86f46c894904da1b07ffeb470c601e.bindTooltip(
+                `<div>
+                     Demand Hub (Commuters: 1)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var circle_marker_586662a395b4acbfe17a1d0b5f695509 = L.circleMarker(
+                [19.114494997273425, 72.86380869045698],
+                {"bubblingMouseEvents": true, "color": "#b83b5e", "dashArray": null, "dashOffset": null, "fill": true, "fillColor": "#f08a5d", "fillOpacity": 0.9, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "opacity": 1.0, "radius": 6, "stroke": true, "weight": 2}
+            ).addTo(map_c0f8cd6853334cdce72624bbcc954cbd);
+        
+    
+        var popup_26e969568450b82334a522c4bbeb9be5 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_1710050c3fa532a21d454d454688c47e = $(`<div id="html_1710050c3fa532a21d454d454688c47e" style="width: 100.0%; height: 100.0%;">         <div style="width:180px; font-family:Arial;">             <h4 style="margin-bottom:5px; color:#b83b5e;">Hub_8</h4>             <b>Unique Commuters:</b> 1<br>             <b>Total Recorded Visits:</b> 4         </div>         </div>`)[0];
+                popup_26e969568450b82334a522c4bbeb9be5.setContent(html_1710050c3fa532a21d454d454688c47e);
+            
+        
+
+        circle_marker_586662a395b4acbfe17a1d0b5f695509.bindPopup(popup_26e969568450b82334a522c4bbeb9be5)
+        ;
+
+        
+    
+    
+            circle_marker_586662a395b4acbfe17a1d0b5f695509.bindTooltip(
+                `<div>
+                     Demand Hub (Commuters: 1)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+</script>
+</html>

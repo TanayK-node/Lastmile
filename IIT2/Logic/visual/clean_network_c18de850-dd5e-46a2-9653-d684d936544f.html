@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_c22b41ab23bc19477d7ea70088950cfe {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_c22b41ab23bc19477d7ea70088950cfe" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_c22b41ab23bc19477d7ea70088950cfe = L.map(
+                "map_c22b41ab23bc19477d7ea70088950cfe",
+                {
+                    center: [19.137471919900577, 72.83433065799665],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 13,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_d06c978126dcba1dcb29522431d987ff = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_d06c978126dcba1dcb29522431d987ff.addTo(map_c22b41ab23bc19477d7ea70088950cfe);
+        
+    
+            var poly_line_1c34fcd1786aad6113549182bb133c83 = L.polyline(
+                [[19.13961391480115, 72.8361134909933], [19.13961391480115, 72.8361134909933], [19.13961391480115, 72.8361134909933], [19.13961391480115, 72.8361134909933], [19.13961391480115, 72.8361134909933], [19.13961391480115, 72.8361134909933], [19.13961391480115, 72.8361134909933], [19.13961391480115, 72.8361134909933], [19.13961391480115, 72.8361134909933], [19.13961391480115, 72.8361134909933], [19.13961391480115, 72.8361134909933], [19.13961391480115, 72.8361134909933], [19.13961391480115, 72.8361134909933], [19.13961391480115, 72.8361134909933], [19.13961391480115, 72.8361134909933], [19.13961391480115, 72.8361134909933], [19.13961391480115, 72.8361134909933], [19.13961391480115, 72.8361134909933], [19.13961391480115, 72.8361134909933], [19.13961391480115, 72.8361134909933], [19.135329925, 72.832547825], [19.13961391480115, 72.8361134909933], [19.13961391480115, 72.8361134909933], [19.13961391480115, 72.8361134909933], [19.13961391480115, 72.8361134909933], [19.13961391480115, 72.8361134909933], [19.13961391480115, 72.8361134909933], [19.13961391480115, 72.8361134909933]],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "gray", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_c22b41ab23bc19477d7ea70088950cfe);
+        
+    
+            poly_line_1c34fcd1786aad6113549182bb133c83.bindTooltip(
+                `<div>
+                     Overall Mobility Network
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_db8f7e89e26c6e24c8cbac3672f0f5a8 = L.marker(
+                [19.13961391480115, 72.8361134909933],
+                {
+}
+            ).addTo(map_c22b41ab23bc19477d7ea70088950cfe);
+        
+    
+            var icon_b7af20b41ed729625deb3cd9e81e7105 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_26847dd440df96a1a1eec32100de679d = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_2048d4047703b0aefc07b2f3355bc95b = $(`<div id="html_2048d4047703b0aefc07b2f3355bc95b" style="width: 100.0%; height: 100.0%;">         <div style="width:220px; font-family:Arial, sans-serif;">             <h4 style="margin-bottom:5px; color:orange;">Other / Transit</h4>             <b>Total Visits:</b> 27 times<br>             <b>Total Time Spent:</b> 38.6 hours<br>             <b>Data Confidence:</b> 173 pings         </div>         </div>`)[0];
+                popup_26847dd440df96a1a1eec32100de679d.setContent(html_2048d4047703b0aefc07b2f3355bc95b);
+            
+        
+
+        marker_db8f7e89e26c6e24c8cbac3672f0f5a8.bindPopup(popup_26847dd440df96a1a1eec32100de679d)
+        ;
+
+        
+    
+    
+            marker_db8f7e89e26c6e24c8cbac3672f0f5a8.bindTooltip(
+                `<div>
+                     Other / Transit (Visited 27x)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_db8f7e89e26c6e24c8cbac3672f0f5a8.setIcon(icon_b7af20b41ed729625deb3cd9e81e7105);
+            
+    
+            var marker_7a6c3edb868a793bdd20014dbbb92f18 = L.marker(
+                [19.135329925, 72.832547825],
+                {
+}
+            ).addTo(map_c22b41ab23bc19477d7ea70088950cfe);
+        
+    
+            var icon_06c00dc8292d2552bc46fbeb91d7e49c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_7fa0cc3ca376007087acd568e11469c3 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_35ab4fccafdd96a71e88df41cf2fe831 = $(`<div id="html_35ab4fccafdd96a71e88df41cf2fe831" style="width: 100.0%; height: 100.0%;">         <div style="width:220px; font-family:Arial, sans-serif;">             <h4 style="margin-bottom:5px; color:orange;">Other / Transit</h4>             <b>Total Visits:</b> 1 times<br>             <b>Total Time Spent:</b> 0.5 hours<br>             <b>Data Confidence:</b> 4 pings         </div>         </div>`)[0];
+                popup_7fa0cc3ca376007087acd568e11469c3.setContent(html_35ab4fccafdd96a71e88df41cf2fe831);
+            
+        
+
+        marker_7a6c3edb868a793bdd20014dbbb92f18.bindPopup(popup_7fa0cc3ca376007087acd568e11469c3)
+        ;
+
+        
+    
+    
+            marker_7a6c3edb868a793bdd20014dbbb92f18.bindTooltip(
+                `<div>
+                     Other / Transit (Visited 1x)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_7a6c3edb868a793bdd20014dbbb92f18.setIcon(icon_06c00dc8292d2552bc46fbeb91d7e49c);
+            
+</script>
+</html>

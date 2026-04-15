@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_3ac993f20e30a01a6f99b51bbfa244b0 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_3ac993f20e30a01a6f99b51bbfa244b0" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_3ac993f20e30a01a6f99b51bbfa244b0 = L.map(
+                "map_3ac993f20e30a01a6f99b51bbfa244b0",
+                {
+                    center: [19.076104233358148, 72.85607389687165],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 13,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_a9dc4ad0b408861d56e73cd1f28ab2d8 = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_a9dc4ad0b408861d56e73cd1f28ab2d8.addTo(map_3ac993f20e30a01a6f99b51bbfa244b0);
+        
+    
+            var poly_line_1f06b6858f830316a177c4ba6458bffb = L.polyline(
+                [[19.04176170003961, 72.85212791682513], [19.035494223333334, 72.85741597], [19.183114793442623, 72.8522151], [19.04176170003961, 72.85212791682513], [19.035494223333334, 72.85741597], [19.140104458333333, 72.86637971190477], [19.140104458333333, 72.86637971190477], [19.140104458333333, 72.86637971190477], [19.140104458333333, 72.86637971190477], [19.0234383, 72.85272942], [19.032711925, 72.8555752625], [19.04176170003961, 72.85212791682513]],
+                {"bubblingMouseEvents": true, "color": "gray", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "gray", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.6, "smoothFactor": 1.0, "stroke": true, "weight": 2}
+            ).addTo(map_3ac993f20e30a01a6f99b51bbfa244b0);
+        
+    
+            poly_line_1f06b6858f830316a177c4ba6458bffb.bindTooltip(
+                `<div>
+                     Overall Mobility Network
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_4def28a8ec95e3824375b425aa5ea168 = L.marker(
+                [19.04176170003961, 72.85212791682513],
+                {
+}
+            ).addTo(map_3ac993f20e30a01a6f99b51bbfa244b0);
+        
+    
+            var icon_f8d7ba4dada32363b94c1c5772d7cc3b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "blue",
+  "iconColor": "white",
+  "icon": "home",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_9e79ee24ab4d242421aa01a532096f1b = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_ac0cae6dcf235e99245a239dac2b0180 = $(`<div id="html_ac0cae6dcf235e99245a239dac2b0180" style="width: 100.0%; height: 100.0%;">         <div style="width:260px; font-family:Arial, sans-serif;">             <h4 style="margin-bottom:5px; margin-top:0px; color:blue;">Home (Overnight)</h4>             <b>Total Visits:</b> 3 times<br>             <b>Total Time Spent:</b> 12.3 hours<br>             <b>Visit Log:</b>             <div style='max-height: 180px; overflow-y: auto; border-top: 1px solid #ccc; padding-top: 6px; margin-top: 6px; font-size: 11px;'><div style='margin-bottom: 6px;'><b>Jun 01, 2023</b></div><div style='margin-left: 8px; margin-bottom: 3px;'>- 5:56 AM - 7:52 AM <span style='color:#666;'>(1h 56m, 1 stop)</span></div><div style='margin-left: 8px; color:#444; margin-bottom: 6px;'>Total: 1h 56m</div><div style='margin-bottom: 6px;'><b>Jun 02, 2023</b></div><div style='margin-left: 8px; margin-bottom: 3px;'>- 5:42 AM - 7:53 AM <span style='color:#666;'>(2h 11m, 1 stop)</span></div><div style='margin-left: 8px; margin-bottom: 3px;'>- 9:14 PM - 5:22 AM <span style='color:#666;'>(8h 8m, 1 stop)</span></div><div style='margin-left: 8px; color:#444; margin-bottom: 6px;'>Total: 10h 19m</div></div>         </div>         </div>`)[0];
+                popup_9e79ee24ab4d242421aa01a532096f1b.setContent(html_ac0cae6dcf235e99245a239dac2b0180);
+            
+        
+
+        marker_4def28a8ec95e3824375b425aa5ea168.bindPopup(popup_9e79ee24ab4d242421aa01a532096f1b)
+        ;
+
+        
+    
+    
+            marker_4def28a8ec95e3824375b425aa5ea168.bindTooltip(
+                `<div>
+                     Home (Overnight) (Visited 3x)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_4def28a8ec95e3824375b425aa5ea168.setIcon(icon_f8d7ba4dada32363b94c1c5772d7cc3b);
+            
+    
+            var marker_cb1c98b6db43c0ab03878881d593c7d7 = L.marker(
+                [19.035494223333334, 72.85741597],
+                {
+}
+            ).addTo(map_3ac993f20e30a01a6f99b51bbfa244b0);
+        
+    
+            var icon_a7d2ab19c284b498f5b6bdfbdfecd103 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_4cb610e86c727ed0d980533a34b942d1 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_26782dcee191cf1c2e37354cf68d3006 = $(`<div id="html_26782dcee191cf1c2e37354cf68d3006" style="width: 100.0%; height: 100.0%;">         <div style="width:260px; font-family:Arial, sans-serif;">             <h4 style="margin-bottom:5px; margin-top:0px; color:orange;">Other / Transit</h4>             <b>Total Visits:</b> 2 times<br>             <b>Total Time Spent:</b> 1.5 hours<br>             <b>Visit Log:</b>             <div style='max-height: 180px; overflow-y: auto; border-top: 1px solid #ccc; padding-top: 6px; margin-top: 6px; font-size: 11px;'><div style='margin-bottom: 6px;'><b>Jun 01, 2023</b></div><div style='margin-left: 8px; margin-bottom: 3px;'>- 8:04 AM - 8:22 AM <span style='color:#666;'>(18m, 1 stop)</span></div><div style='margin-left: 8px; color:#444; margin-bottom: 6px;'>Total: 18m</div><div style='margin-bottom: 6px;'><b>Jun 02, 2023</b></div><div style='margin-left: 8px; margin-bottom: 3px;'>- 7:58 AM - 9:08 AM <span style='color:#666;'>(1h 10m, 1 stop)</span></div><div style='margin-left: 8px; color:#444; margin-bottom: 6px;'>Total: 1h 10m</div></div>         </div>         </div>`)[0];
+                popup_4cb610e86c727ed0d980533a34b942d1.setContent(html_26782dcee191cf1c2e37354cf68d3006);
+            
+        
+
+        marker_cb1c98b6db43c0ab03878881d593c7d7.bindPopup(popup_4cb610e86c727ed0d980533a34b942d1)
+        ;
+
+        
+    
+    
+            marker_cb1c98b6db43c0ab03878881d593c7d7.bindTooltip(
+                `<div>
+                     Other / Transit (Visited 2x)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_cb1c98b6db43c0ab03878881d593c7d7.setIcon(icon_a7d2ab19c284b498f5b6bdfbdfecd103);
+            
+    
+            var marker_d1b2a1ec0792e5c158e27dee248b1eb9 = L.marker(
+                [19.183114793442623, 72.8522151],
+                {
+}
+            ).addTo(map_3ac993f20e30a01a6f99b51bbfa244b0);
+        
+    
+            var icon_261484065a355bd8114c69e203316a1d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "green",
+  "iconColor": "white",
+  "icon": "briefcase",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_f275e3f8593356ebcc02428de7449567 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_ce5b91a8d1fc949fe95d8f4afe31196e = $(`<div id="html_ce5b91a8d1fc949fe95d8f4afe31196e" style="width: 100.0%; height: 100.0%;">         <div style="width:260px; font-family:Arial, sans-serif;">             <h4 style="margin-bottom:5px; margin-top:0px; color:green;">Work/School</h4>             <b>Total Visits:</b> 1 times<br>             <b>Total Time Spent:</b> 6.6 hours<br>             <b>Visit Log:</b>             <div style='max-height: 180px; overflow-y: auto; border-top: 1px solid #ccc; padding-top: 6px; margin-top: 6px; font-size: 11px;'><div style='margin-bottom: 6px;'><b>Jun 01, 2023</b></div><div style='margin-left: 8px; margin-bottom: 3px;'>- 10:05 AM - 4:39 PM <span style='color:#666;'>(6h 35m, 1 stop)</span></div><div style='margin-left: 8px; color:#444; margin-bottom: 6px;'>Total: 6h 35m</div></div>         </div>         </div>`)[0];
+                popup_f275e3f8593356ebcc02428de7449567.setContent(html_ce5b91a8d1fc949fe95d8f4afe31196e);
+            
+        
+
+        marker_d1b2a1ec0792e5c158e27dee248b1eb9.bindPopup(popup_f275e3f8593356ebcc02428de7449567)
+        ;
+
+        
+    
+    
+            marker_d1b2a1ec0792e5c158e27dee248b1eb9.bindTooltip(
+                `<div>
+                     Work/School (Visited 1x)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_d1b2a1ec0792e5c158e27dee248b1eb9.setIcon(icon_261484065a355bd8114c69e203316a1d);
+            
+    
+            var marker_8dec057fd5198890a37a767ee09211ef = L.marker(
+                [19.140104458333333, 72.86637971190477],
+                {
+}
+            ).addTo(map_3ac993f20e30a01a6f99b51bbfa244b0);
+        
+    
+            var icon_550c66b4d60dd8c0ab47077a0c1640cd = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_bcf82813f8d4827ba65c05ca522a1850 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_ea842bdc0db7855953de55cfc2bdc181 = $(`<div id="html_ea842bdc0db7855953de55cfc2bdc181" style="width: 100.0%; height: 100.0%;">         <div style="width:260px; font-family:Arial, sans-serif;">             <h4 style="margin-bottom:5px; margin-top:0px; color:orange;">Other / Transit</h4>             <b>Total Visits:</b> 4 times<br>             <b>Total Time Spent:</b> 3.0 hours<br>             <b>Visit Log:</b>             <div style='max-height: 180px; overflow-y: auto; border-top: 1px solid #ccc; padding-top: 6px; margin-top: 6px; font-size: 11px;'><div style='margin-bottom: 6px;'><b>Jun 02, 2023</b></div><div style='margin-left: 8px; margin-bottom: 3px;'>- 12:33 PM - 4:03 PM <span style='color:#666;'>(3h 30m, 4 stops)</span></div><div style='margin-left: 8px; color:#444; margin-bottom: 6px;'>Total: 3h 30m</div></div>         </div>         </div>`)[0];
+                popup_bcf82813f8d4827ba65c05ca522a1850.setContent(html_ea842bdc0db7855953de55cfc2bdc181);
+            
+        
+
+        marker_8dec057fd5198890a37a767ee09211ef.bindPopup(popup_bcf82813f8d4827ba65c05ca522a1850)
+        ;
+
+        
+    
+    
+            marker_8dec057fd5198890a37a767ee09211ef.bindTooltip(
+                `<div>
+                     Other / Transit (Visited 4x)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_8dec057fd5198890a37a767ee09211ef.setIcon(icon_550c66b4d60dd8c0ab47077a0c1640cd);
+            
+    
+            var marker_3f85bcde1138fbb374999f691158ac17 = L.marker(
+                [19.0234383, 72.85272942],
+                {
+}
+            ).addTo(map_3ac993f20e30a01a6f99b51bbfa244b0);
+        
+    
+            var icon_6095e742cbc73673fe8f6f51f642462b = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_52ba6047e7f7a7de638644f7917bded6 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_d9157e756e32ffde9b6133a1f159f1f1 = $(`<div id="html_d9157e756e32ffde9b6133a1f159f1f1" style="width: 100.0%; height: 100.0%;">         <div style="width:260px; font-family:Arial, sans-serif;">             <h4 style="margin-bottom:5px; margin-top:0px; color:orange;">Other / Transit</h4>             <b>Total Visits:</b> 1 times<br>             <b>Total Time Spent:</b> 0.6 hours<br>             <b>Visit Log:</b>             <div style='max-height: 180px; overflow-y: auto; border-top: 1px solid #ccc; padding-top: 6px; margin-top: 6px; font-size: 11px;'><div style='margin-bottom: 6px;'><b>Jun 02, 2023</b></div><div style='margin-left: 8px; margin-bottom: 3px;'>- 5:10 PM - 5:47 PM <span style='color:#666;'>(37m, 1 stop)</span></div><div style='margin-left: 8px; color:#444; margin-bottom: 6px;'>Total: 37m</div></div>         </div>         </div>`)[0];
+                popup_52ba6047e7f7a7de638644f7917bded6.setContent(html_d9157e756e32ffde9b6133a1f159f1f1);
+            
+        
+
+        marker_3f85bcde1138fbb374999f691158ac17.bindPopup(popup_52ba6047e7f7a7de638644f7917bded6)
+        ;
+
+        
+    
+    
+            marker_3f85bcde1138fbb374999f691158ac17.bindTooltip(
+                `<div>
+                     Other / Transit (Visited 1x)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_3f85bcde1138fbb374999f691158ac17.setIcon(icon_6095e742cbc73673fe8f6f51f642462b);
+            
+    
+            var marker_d80febb78da2fdcb39bf4331a279f688 = L.marker(
+                [19.032711925, 72.8555752625],
+                {
+}
+            ).addTo(map_3ac993f20e30a01a6f99b51bbfa244b0);
+        
+    
+            var icon_705010f636f5d3fdd8d5631dc9e14683 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "orange",
+  "iconColor": "white",
+  "icon": "info-sign",
+  "prefix": "glyphicon",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_c639926b62cd6165b1af617d3b70b703 = L.popup({
+  "maxWidth": 300,
+});
+
+        
+            
+                var html_1c2053955b6e0a9784bb6e7e24c6100d = $(`<div id="html_1c2053955b6e0a9784bb6e7e24c6100d" style="width: 100.0%; height: 100.0%;">         <div style="width:260px; font-family:Arial, sans-serif;">             <h4 style="margin-bottom:5px; margin-top:0px; color:orange;">Other / Transit</h4>             <b>Total Visits:</b> 1 times<br>             <b>Total Time Spent:</b> 2.2 hours<br>             <b>Visit Log:</b>             <div style='max-height: 180px; overflow-y: auto; border-top: 1px solid #ccc; padding-top: 6px; margin-top: 6px; font-size: 11px;'><div style='margin-bottom: 6px;'><b>Jun 02, 2023</b></div><div style='margin-left: 8px; margin-bottom: 3px;'>- 5:53 PM - 8:08 PM <span style='color:#666;'>(2h 15m, 1 stop)</span></div><div style='margin-left: 8px; color:#444; margin-bottom: 6px;'>Total: 2h 15m</div></div>         </div>         </div>`)[0];
+                popup_c639926b62cd6165b1af617d3b70b703.setContent(html_1c2053955b6e0a9784bb6e7e24c6100d);
+            
+        
+
+        marker_d80febb78da2fdcb39bf4331a279f688.bindPopup(popup_c639926b62cd6165b1af617d3b70b703)
+        ;
+
+        
+    
+    
+            marker_d80febb78da2fdcb39bf4331a279f688.bindTooltip(
+                `<div>
+                     Other / Transit (Visited 1x)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+                marker_d80febb78da2fdcb39bf4331a279f688.setIcon(icon_705010f636f5d3fdd8d5631dc9e14683);
+            
+</script>
+</html>

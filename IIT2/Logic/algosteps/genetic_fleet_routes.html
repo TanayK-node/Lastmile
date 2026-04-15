@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_24a834d4e89721dbfa999e8a6dc2526b {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+
+            <style>html, body {
+                width: 100%;
+                height: 100%;
+                margin: 0;
+                padding: 0;
+            }
+            </style>
+
+            <style>#map {
+                position:absolute;
+                top:0;
+                bottom:0;
+                right:0;
+                left:0;
+                }
+            </style>
+
+            <script>
+                L_NO_TOUCH = false;
+                L_DISABLE_3D = false;
+            </script>
+
+        
+</head>
+<body>
+    
+    
+            <div class="folium-map" id="map_24a834d4e89721dbfa999e8a6dc2526b" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_24a834d4e89721dbfa999e8a6dc2526b = L.map(
+                "map_24a834d4e89721dbfa999e8a6dc2526b",
+                {
+                    center: [19.1197, 72.8464],
+                    crs: L.CRS.EPSG3857,
+                    ...{
+  "zoom": 14,
+  "zoomControl": true,
+  "preferCanvas": false,
+}
+
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_fa2fadba9fbe760cf757f5bf6353a17b = L.tileLayer(
+                "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+                {
+  "minZoom": 0,
+  "maxZoom": 20,
+  "maxNativeZoom": 20,
+  "noWrap": false,
+  "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e",
+  "subdomains": "abcd",
+  "detectRetina": false,
+  "tms": false,
+  "opacity": 1,
+}
+
+            );
+        
+    
+            tile_layer_fa2fadba9fbe760cf757f5bf6353a17b.addTo(map_24a834d4e89721dbfa999e8a6dc2526b);
+        
+    
+            var marker_1bdb7e9493e2e52ef43f9a4008311b81 = L.marker(
+                [19.1197, 72.8464],
+                {
+}
+            ).addTo(map_24a834d4e89721dbfa999e8a6dc2526b);
+        
+    
+            var icon_69f3d33bd7d9846be6ba863696af1234 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "red",
+  "iconColor": "white",
+  "icon": "train",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_57a2d799d63b79c89274b059c978666f = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_8fe91057687119f764095ffadefff143 = $(`<div id="html_8fe91057687119f764095ffadefff143" style="width: 100.0%; height: 100.0%;"><b>Andheri Station (Origin)</b></div>`)[0];
+                popup_57a2d799d63b79c89274b059c978666f.setContent(html_8fe91057687119f764095ffadefff143);
+            
+        
+
+        marker_1bdb7e9493e2e52ef43f9a4008311b81.bindPopup(popup_57a2d799d63b79c89274b059c978666f)
+        ;
+
+        
+    
+    
+                marker_1bdb7e9493e2e52ef43f9a4008311b81.setIcon(icon_69f3d33bd7d9846be6ba863696af1234);
+            
+    
+            var marker_d067f9e98a259436576b045d7377a19e = L.marker(
+                [19.13145428769841, 72.82443821805556],
+                {
+}
+            ).addTo(map_24a834d4e89721dbfa999e8a6dc2526b);
+        
+    
+            var icon_84fb4acbf9fd2047ec77083f50fcbc18 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "black",
+  "iconColor": "#e6194b",
+  "icon": "bus",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_7d6c26a4a167832c6fc4163abb13a83d = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_17cf983d35571847f1483873a2ec9479 = $(`<div id="html_17cf983d35571847f1483873a2ec9479" style="width: 100.0%; height: 100.0%;"><b>Gen-AI Bus 1 - Stop 1</b><br>Hub_1<br>Boarded: 1 pax</div>`)[0];
+                popup_7d6c26a4a167832c6fc4163abb13a83d.setContent(html_17cf983d35571847f1483873a2ec9479);
+            
+        
+
+        marker_d067f9e98a259436576b045d7377a19e.bindPopup(popup_7d6c26a4a167832c6fc4163abb13a83d)
+        ;
+
+        
+    
+    
+                marker_d067f9e98a259436576b045d7377a19e.setIcon(icon_84fb4acbf9fd2047ec77083f50fcbc18);
+            
+    
+            var marker_4950f6a6c8f36bf38a259ee72e4414e2 = L.marker(
+                [19.164504555037595, 72.83524731440686],
+                {
+}
+            ).addTo(map_24a834d4e89721dbfa999e8a6dc2526b);
+        
+    
+            var icon_6f03971f061455e5586dd3f6452014a2 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "black",
+  "iconColor": "#e6194b",
+  "icon": "bus",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_87298a285f42cb97bee246998908e4a2 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_fa3d79c19dc2f660ab0a3fd4c1a8905e = $(`<div id="html_fa3d79c19dc2f660ab0a3fd4c1a8905e" style="width: 100.0%; height: 100.0%;"><b>Gen-AI Bus 1 - Stop 2</b><br>Hub_7<br>Boarded: 1 pax</div>`)[0];
+                popup_87298a285f42cb97bee246998908e4a2.setContent(html_fa3d79c19dc2f660ab0a3fd4c1a8905e);
+            
+        
+
+        marker_4950f6a6c8f36bf38a259ee72e4414e2.bindPopup(popup_87298a285f42cb97bee246998908e4a2)
+        ;
+
+        
+    
+    
+                marker_4950f6a6c8f36bf38a259ee72e4414e2.setIcon(icon_6f03971f061455e5586dd3f6452014a2);
+            
+    
+            var marker_bc4e1088a85e8455c513f0b7a5dac130 = L.marker(
+                [19.15830993873913, 72.8520807975797],
+                {
+}
+            ).addTo(map_24a834d4e89721dbfa999e8a6dc2526b);
+        
+    
+            var icon_a4a86e67e9028c6cf8f6d05deb29f51c = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "black",
+  "iconColor": "#e6194b",
+  "icon": "bus",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_e6fc672190461e486c5effbf44077654 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_af32de9c77a3637ff8c986e938047acd = $(`<div id="html_af32de9c77a3637ff8c986e938047acd" style="width: 100.0%; height: 100.0%;"><b>Gen-AI Bus 1 - Stop 3</b><br>Hub_6<br>Boarded: 1 pax</div>`)[0];
+                popup_e6fc672190461e486c5effbf44077654.setContent(html_af32de9c77a3637ff8c986e938047acd);
+            
+        
+
+        marker_bc4e1088a85e8455c513f0b7a5dac130.bindPopup(popup_e6fc672190461e486c5effbf44077654)
+        ;
+
+        
+    
+    
+                marker_bc4e1088a85e8455c513f0b7a5dac130.setIcon(icon_a4a86e67e9028c6cf8f6d05deb29f51c);
+            
+    
+            var marker_9d896c8b59f37107eaa782953c46e722 = L.marker(
+                [19.146020901096083, 72.84754139257349],
+                {
+}
+            ).addTo(map_24a834d4e89721dbfa999e8a6dc2526b);
+        
+    
+            var icon_2680dad8fa25478318d0c97acffb2af9 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "black",
+  "iconColor": "#e6194b",
+  "icon": "bus",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_38d22b13161dce5d53b61133fb169ac3 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_b221997c56f3d40a39959a4c503b6c07 = $(`<div id="html_b221997c56f3d40a39959a4c503b6c07" style="width: 100.0%; height: 100.0%;"><b>Gen-AI Bus 1 - Stop 4</b><br>Hub_2<br>Boarded: 2 pax</div>`)[0];
+                popup_38d22b13161dce5d53b61133fb169ac3.setContent(html_b221997c56f3d40a39959a4c503b6c07);
+            
+        
+
+        marker_9d896c8b59f37107eaa782953c46e722.bindPopup(popup_38d22b13161dce5d53b61133fb169ac3)
+        ;
+
+        
+    
+    
+                marker_9d896c8b59f37107eaa782953c46e722.setIcon(icon_2680dad8fa25478318d0c97acffb2af9);
+            
+    
+            var marker_090d8c4f43b412240dc9b445e6eebc7f = L.marker(
+                [19.128153848838974, 72.86819236871992],
+                {
+}
+            ).addTo(map_24a834d4e89721dbfa999e8a6dc2526b);
+        
+    
+            var icon_f22fbceff71bb9ca7c34a8d95dd3df3d = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "black",
+  "iconColor": "#e6194b",
+  "icon": "bus",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_af141e617dc4f188836bbbdb560fbe42 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_7e71a2930d2101e0222adbaec4e203c5 = $(`<div id="html_7e71a2930d2101e0222adbaec4e203c5" style="width: 100.0%; height: 100.0%;"><b>Gen-AI Bus 1 - Stop 5</b><br>Hub_3<br>Boarded: 3 pax</div>`)[0];
+                popup_af141e617dc4f188836bbbdb560fbe42.setContent(html_7e71a2930d2101e0222adbaec4e203c5);
+            
+        
+
+        marker_090d8c4f43b412240dc9b445e6eebc7f.bindPopup(popup_af141e617dc4f188836bbbdb560fbe42)
+        ;
+
+        
+    
+    
+                marker_090d8c4f43b412240dc9b445e6eebc7f.setIcon(icon_f22fbceff71bb9ca7c34a8d95dd3df3d);
+            
+    
+            var marker_b093f453510a5108ee12d79dd09540fb = L.marker(
+                [19.12153964310037, 72.88604146111355],
+                {
+}
+            ).addTo(map_24a834d4e89721dbfa999e8a6dc2526b);
+        
+    
+            var icon_70e18b860a47f6d7e2c2ae456cf028d4 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "black",
+  "iconColor": "#e6194b",
+  "icon": "bus",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_59e5a6e53a0ac84380a46e9036bf8fea = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_f3f8420cefd2631b5c645e8918e3bec5 = $(`<div id="html_f3f8420cefd2631b5c645e8918e3bec5" style="width: 100.0%; height: 100.0%;"><b>Gen-AI Bus 1 - Stop 6</b><br>Hub_4<br>Boarded: 2 pax</div>`)[0];
+                popup_59e5a6e53a0ac84380a46e9036bf8fea.setContent(html_f3f8420cefd2631b5c645e8918e3bec5);
+            
+        
+
+        marker_b093f453510a5108ee12d79dd09540fb.bindPopup(popup_59e5a6e53a0ac84380a46e9036bf8fea)
+        ;
+
+        
+    
+    
+                marker_b093f453510a5108ee12d79dd09540fb.setIcon(icon_70e18b860a47f6d7e2c2ae456cf028d4);
+            
+    
+            var marker_769b627189f4956284a165ebf937cd1d = L.marker(
+                [19.114494997273425, 72.86380869045698],
+                {
+}
+            ).addTo(map_24a834d4e89721dbfa999e8a6dc2526b);
+        
+    
+            var icon_e002b750d35a967796d2f5e6aeb36914 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "black",
+  "iconColor": "#e6194b",
+  "icon": "bus",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_f3f64874763477d9a55edb05a411caed = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_200273e7288d6a4471edd36a07b0ffef = $(`<div id="html_200273e7288d6a4471edd36a07b0ffef" style="width: 100.0%; height: 100.0%;"><b>Gen-AI Bus 1 - Stop 7</b><br>Hub_8<br>Boarded: 1 pax</div>`)[0];
+                popup_f3f64874763477d9a55edb05a411caed.setContent(html_200273e7288d6a4471edd36a07b0ffef);
+            
+        
+
+        marker_769b627189f4956284a165ebf937cd1d.bindPopup(popup_f3f64874763477d9a55edb05a411caed)
+        ;
+
+        
+    
+    
+                marker_769b627189f4956284a165ebf937cd1d.setIcon(icon_e002b750d35a967796d2f5e6aeb36914);
+            
+    
+            var marker_bebe133d4cbca887ee2af73b5880b2d3 = L.marker(
+                [19.11737378615688, 72.85761303252008],
+                {
+}
+            ).addTo(map_24a834d4e89721dbfa999e8a6dc2526b);
+        
+    
+            var icon_549784e49502df43fbd9956941b5df55 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "black",
+  "iconColor": "#e6194b",
+  "icon": "bus",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_0a198f6b3cea15a3e9f5df0cd8d746d6 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_53efa3841e0a8ba66f43d649acc7f734 = $(`<div id="html_53efa3841e0a8ba66f43d649acc7f734" style="width: 100.0%; height: 100.0%;"><b>Gen-AI Bus 1 - Stop 8</b><br>Hub_5<br>Boarded: 3 pax</div>`)[0];
+                popup_0a198f6b3cea15a3e9f5df0cd8d746d6.setContent(html_53efa3841e0a8ba66f43d649acc7f734);
+            
+        
+
+        marker_bebe133d4cbca887ee2af73b5880b2d3.bindPopup(popup_0a198f6b3cea15a3e9f5df0cd8d746d6)
+        ;
+
+        
+    
+    
+                marker_bebe133d4cbca887ee2af73b5880b2d3.setIcon(icon_549784e49502df43fbd9956941b5df55);
+            
+    
+            var marker_d8f696640078006c4114e0eb17bb1c07 = L.marker(
+                [19.120368130583987, 72.84618406597143],
+                {
+}
+            ).addTo(map_24a834d4e89721dbfa999e8a6dc2526b);
+        
+    
+            var icon_d69b8d44cfcb291586c72e512c11facd = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "black",
+  "iconColor": "#e6194b",
+  "icon": "bus",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_f62ff1ecd1383c42466a3a4bd9f5b235 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_b89877e856c9a976064dacd856a1150a = $(`<div id="html_b89877e856c9a976064dacd856a1150a" style="width: 100.0%; height: 100.0%;"><b>Gen-AI Bus 1 - Stop 9</b><br>Hub_0<br>Boarded: 5 pax</div>`)[0];
+                popup_f62ff1ecd1383c42466a3a4bd9f5b235.setContent(html_b89877e856c9a976064dacd856a1150a);
+            
+        
+
+        marker_d8f696640078006c4114e0eb17bb1c07.bindPopup(popup_f62ff1ecd1383c42466a3a4bd9f5b235)
+        ;
+
+        
+    
+    
+                marker_d8f696640078006c4114e0eb17bb1c07.setIcon(icon_d69b8d44cfcb291586c72e512c11facd);
+            
+    
+            var poly_line_372ba5a4c7c2aa88ee37cc465180cb7a = L.polyline(
+                [[19.1197, 72.8464], [19.13145428769841, 72.82443821805556], [19.164504555037595, 72.83524731440686], [19.15830993873913, 72.8520807975797], [19.146020901096083, 72.84754139257349], [19.128153848838974, 72.86819236871992], [19.12153964310037, 72.88604146111355], [19.114494997273425, 72.86380869045698], [19.11737378615688, 72.85761303252008], [19.120368130583987, 72.84618406597143], [19.1197, 72.8464]],
+                {"bubblingMouseEvents": true, "color": "#e6194b", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#e6194b", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(map_24a834d4e89721dbfa999e8a6dc2526b);
+        
+    
+            poly_line_372ba5a4c7c2aa88ee37cc465180cb7a.bindTooltip(
+                `<div>
+                     Gen-AI Bus 1 (Load: 19 pax)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_632e695fd4ab3cfd756ddc0f2f0e878a = L.marker(
+                [19.120368130583987, 72.84618406597143],
+                {
+}
+            ).addTo(map_24a834d4e89721dbfa999e8a6dc2526b);
+        
+    
+            var icon_ca7bd4b325570566b5a6a0a86031df42 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "black",
+  "iconColor": "#4363d8",
+  "icon": "bus",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_7b1bb2e99439ef985ded5a8027c7c1f3 = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_9fdff4348a0d3255fd2a202feca25d20 = $(`<div id="html_9fdff4348a0d3255fd2a202feca25d20" style="width: 100.0%; height: 100.0%;"><b>Gen-AI Bus 2 - Stop 1</b><br>Hub_0<br>Boarded: 40 pax</div>`)[0];
+                popup_7b1bb2e99439ef985ded5a8027c7c1f3.setContent(html_9fdff4348a0d3255fd2a202feca25d20);
+            
+        
+
+        marker_632e695fd4ab3cfd756ddc0f2f0e878a.bindPopup(popup_7b1bb2e99439ef985ded5a8027c7c1f3)
+        ;
+
+        
+    
+    
+                marker_632e695fd4ab3cfd756ddc0f2f0e878a.setIcon(icon_ca7bd4b325570566b5a6a0a86031df42);
+            
+    
+            var poly_line_927ff366ac053ea0387e108c0145fa7f = L.polyline(
+                [[19.1197, 72.8464], [19.120368130583987, 72.84618406597143], [19.1197, 72.8464]],
+                {"bubblingMouseEvents": true, "color": "#4363d8", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#4363d8", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(map_24a834d4e89721dbfa999e8a6dc2526b);
+        
+    
+            poly_line_927ff366ac053ea0387e108c0145fa7f.bindTooltip(
+                `<div>
+                     Gen-AI Bus 2 (Load: 40 pax)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+    
+            var marker_16dc5436eba50fca4f432d6e8adef7b1 = L.marker(
+                [19.120368130583987, 72.84618406597143],
+                {
+}
+            ).addTo(map_24a834d4e89721dbfa999e8a6dc2526b);
+        
+    
+            var icon_0a31605090a534230bd7cfc5190cd7b1 = L.AwesomeMarkers.icon(
+                {
+  "markerColor": "black",
+  "iconColor": "#3cb44b",
+  "icon": "bus",
+  "prefix": "fa",
+  "extraClasses": "fa-rotate-0",
+}
+            );
+        
+    
+        var popup_973592ec22315adb47c7d8f97a77e7cd = L.popup({
+  "maxWidth": "100%",
+});
+
+        
+            
+                var html_35d7bacf02a2bed7a495dc049f7452e2 = $(`<div id="html_35d7bacf02a2bed7a495dc049f7452e2" style="width: 100.0%; height: 100.0%;"><b>Gen-AI Bus 3 - Stop 1</b><br>Hub_0<br>Boarded: 40 pax</div>`)[0];
+                popup_973592ec22315adb47c7d8f97a77e7cd.setContent(html_35d7bacf02a2bed7a495dc049f7452e2);
+            
+        
+
+        marker_16dc5436eba50fca4f432d6e8adef7b1.bindPopup(popup_973592ec22315adb47c7d8f97a77e7cd)
+        ;
+
+        
+    
+    
+                marker_16dc5436eba50fca4f432d6e8adef7b1.setIcon(icon_0a31605090a534230bd7cfc5190cd7b1);
+            
+    
+            var poly_line_ee4323a6dcba82088878b70af71c8c55 = L.polyline(
+                [[19.1197, 72.8464], [19.120368130583987, 72.84618406597143], [19.1197, 72.8464]],
+                {"bubblingMouseEvents": true, "color": "#3cb44b", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "#3cb44b", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.8, "smoothFactor": 1.0, "stroke": true, "weight": 4}
+            ).addTo(map_24a834d4e89721dbfa999e8a6dc2526b);
+        
+    
+            poly_line_ee4323a6dcba82088878b70af71c8c55.bindTooltip(
+                `<div>
+                     Gen-AI Bus 3 (Load: 40 pax)
+                 </div>`,
+                {
+  "sticky": true,
+}
+            );
+        
+</script>
+</html>
