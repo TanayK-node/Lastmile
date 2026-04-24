@@ -44,10 +44,11 @@ def extract_trip_chains(stops_file_path, stations_dict, output_dir, max_bus_radi
     df['location_tag'] = [t[0] for t in tags]
     df['station_coords'] = [t[1] for t in tags]
     
-    first_mile_demands = []
-    last_mile_demands = []
+    # Set up our 4 explicit time-binned buckets
+    am_feeder, am_dispersal = [], []
+    pm_feeder, pm_dispersal = [], []
     
-    print(f"Tracing Commuters (Max Local Bus Radius: {max_bus_radius/1000}km)...")
+    print(f"Tracing 4D Commuter Flows (Max Local Bus Radius: {max_bus_radius/1000}km)...")
     
     for (device_id, trip_date), day_data in df.groupby(['device_aid', 'trip_date']):
         day_data = day_data.reset_index(drop=True)
@@ -57,54 +58,70 @@ def extract_trip_chains(stops_file_path, stations_dict, output_dir, max_bus_radi
             station_name = day_data.loc[idx, 'location_tag']
             s_lat, s_lon = day_data.loc[idx, 'station_coords']
             
-            # --- 1. FIRST MILE (Home -> Station) ---
+            # --- 1. FEEDER DEMAND (Home/Office -> Station) ---
             past_pings = day_data.loc[:idx-1]
             valid_origins = past_pings[past_pings['location_tag'] == 'Non-Station']
             
             if not valid_origins.empty:
-                home = valid_origins.iloc[-1]
-                dist_to_station = calculate_distance(home[lat_col], home[lon_col], s_lat, s_lon)
+                origin = valid_origins.iloc[-1]
+                dist_to_station = calculate_distance(origin[lat_col], origin[lon_col], s_lat, s_lon)
+                ping_hour = origin[time_col].hour
                 
                 # Verify it's a LOCAL trip (Under 6km)
                 if dist_to_station <= max_bus_radius and dist_to_station > 200: # 200m prevents clustering the station itself
-                    first_mile_demands.append({
+                    trip_data = {
                         'device_aid': device_id, 'date': trip_date,
                         'station': station_name, 'type': 'Feeder_Demand',
-                        'lat': home[lat_col], 'lon': home[lon_col]
-                    })
+                        'lat': origin[lat_col], 'lon': origin[lon_col], 'hour': ping_hour
+                    }
+                    
+                    # Bin by Time of Day
+                    if 6 <= ping_hour < 12:     # 6 AM to 11:59 AM
+                        am_feeder.append(trip_data)
+                    elif 16 <= ping_hour < 22:  # 4 PM to 9:59 PM
+                        pm_feeder.append(trip_data)
                 
-            # --- 2. LAST MILE (Station -> Office) ---
+            # --- 2. DISPERSAL DEMAND (Station -> Office/Home) ---
             future_pings = day_data.loc[idx+1:]
             valid_dests = future_pings[future_pings['location_tag'] == 'Non-Station']
             
             if not valid_dests.empty:
-                office = valid_dests.iloc[0]
-                dist_to_station = calculate_distance(office[lat_col], office[lon_col], s_lat, s_lon)
+                dest = valid_dests.iloc[0]
+                dist_to_station = calculate_distance(dest[lat_col], dest[lon_col], s_lat, s_lon)
+                ping_hour = dest[time_col].hour
                 
                 # Verify it's a LOCAL trip (Under 6km)
                 if dist_to_station <= max_bus_radius and dist_to_station > 200:
-                    last_mile_demands.append({
+                    trip_data = {
                         'device_aid': device_id, 'date': trip_date,
                         'station': station_name, 'type': 'Dispersal_Demand',
-                        'lat': office[lat_col], 'lon': office[lon_col]
-                    })
+                        'lat': dest[lat_col], 'lon': dest[lon_col], 'hour': ping_hour
+                    }
+                    
+                    # Bin by Time of Day
+                    if 6 <= ping_hour < 12:     # 6 AM to 11:59 AM
+                        am_dispersal.append(trip_data)
+                    elif 16 <= ping_hour < 22:  # 4 PM to 9:59 PM
+                        pm_dispersal.append(trip_data)
 
     # ==========================================
     # 3. SAVE AND EXPORT
     # ==========================================
     os.makedirs(output_dir, exist_ok=True)
-    pd.DataFrame(first_mile_demands).to_csv(os.path.join(output_dir, "first_mile_feeder_demand.csv"), index=False)
-    pd.DataFrame(last_mile_demands).to_csv(os.path.join(output_dir, "last_mile_dispersal_demand.csv"), index=False)
+    pd.DataFrame(am_feeder).to_csv(os.path.join(output_dir, "AM_feeder_demand.csv"), index=False)
+    pd.DataFrame(am_dispersal).to_csv(os.path.join(output_dir, "AM_dispersal_demand.csv"), index=False)
+    pd.DataFrame(pm_feeder).to_csv(os.path.join(output_dir, "PM_feeder_demand.csv"), index=False)
+    pd.DataFrame(pm_dispersal).to_csv(os.path.join(output_dir, "PM_dispersal_demand.csv"), index=False)
     
     print("\n" + "="*50)
-    print("EXTRACTION COMPLETE")
+    print("4D EXTRACTION COMPLETE")
     print("="*50)
-    print(f"Identified {len(first_mile_demands):,} First-Mile Feeder trips.")
-    print(f"Identified {len(last_mile_demands):,} Last-Mile Dispersal trips.")
+    print(f"Identified {len(am_feeder):,} AM Feeder trips | {len(am_dispersal):,} AM Dispersal trips.")
+    print(f"Identified {len(pm_feeder):,} PM Feeder trips | {len(pm_dispersal):,} PM Dispersal trips.")
 
 # ==========================================
 if __name__ == "__main__":
-    STOPS_DATA_FILE = '../mumbai_multiday_stops_robust.csv' # UPDATE IF NEEDED
+    STOPS_DATA_FILE = 'mumbai_multiday_stops_robust.csv' # UPDATE IF NEEDED
     OUTPUT_DIRECTORY = './demand_matrices/'
     
     STATIONS = {

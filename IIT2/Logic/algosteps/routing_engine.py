@@ -5,6 +5,7 @@ from sklearn.cluster import DBSCAN
 import random
 import copy
 import os
+import IIT2.Logic.Final.osmnx_router as oxr
 
 # ==========================================
 # 1. CORE MATH & DISTANCE
@@ -31,13 +32,12 @@ def build_distance_matrix(station_lat, station_lon, stops):
 # 2. AI VIRTUAL STOPS (DBSCAN)
 # ==========================================
 def generate_virtual_stops(demand_df, station_lat, station_lon):
-    if len(demand_df) < 5: # Need minimum points for clustering
+    if len(demand_df) < 5: 
         return None
 
     coords = np.radians(demand_df[['lat', 'lon']])
     epsilon = (300 / 1000.0) / 6371.0088 
     
-    # DBSCAN clusters the demand into high-density virtual bus stops
     db = DBSCAN(eps=epsilon, min_samples=4, algorithm='ball_tree', metric='haversine').fit(coords)
     demand_df = demand_df.copy()
     demand_df['hub_cluster_id'] = db.labels_
@@ -110,9 +110,10 @@ def mutate(chromosome, mutation_rate=0.2):
         chromosome[a], chromosome[b] = chromosome[b], chromosome[a]
     return chromosome
 
-def run_genetic_ai(stops_df, station_lat, station_lon, capacity=30, pop_size=100, generations=150):
+# NOTE: Passed 'G' into the function parameters here
+def run_genetic_ai(G, stops_df, station_lat, station_lon, capacity=30, pop_size=100, generations=150):
     processed_stops = preprocess_demand(stops_df, capacity)
-    dist_matrix = build_distance_matrix(station_lat, station_lon, processed_stops)
+    dist_matrix = oxr.build_osmnx_distance_matrix(G, station_lat, station_lon, processed_stops)
     num_stops = len(processed_stops)
     
     population = [random.sample(range(num_stops), num_stops) for _ in range(pop_size)]
@@ -136,14 +137,25 @@ def run_genetic_ai(stops_df, station_lat, station_lon, capacity=30, pop_size=100
         population = next_gen
 
     return best_routes, best_distance
-
 # ==========================================
 # 4. DASHBOARD VISUALIZATION
 # ==========================================
-def draw_final_map(routes, station_name, station_lat, station_lon, direction, output_filename):
-    m = folium.Map(location=[station_lat, station_lon], zoom_start=13, tiles='CartoDB positron')
+def get_street_path(G, lat1, lon1, lat2, lon2):
+    """Fetches the true turn-by-turn road geometry between two points."""
+    try:
+        orig_node = ox.distance.nearest_nodes(G, X=lon1, Y=lat1)
+        dest_node = ox.distance.nearest_nodes(G, X=lon2, Y=lat2)
+        route = nx.shortest_path(G, orig_node, dest_node, weight='length')
+        # Extract lat/lon for every intersection on the path
+        return [[G.nodes[n]['y'], G.nodes[n]['x']] for n in route]
+    except Exception:
+        # Fallback to straight line if a road is totally blocked
+        return [[lat1, lon1], [lat2, lon2]]
 
-    # Station Marker
+def draw_final_map(G, routes, station_name, station_lat, station_lon, direction, output_filename):
+    print(f"  * Tracing {len(routes)} bus routes onto physical street maps...")
+    m = folium.Map(location=[station_lat, station_lon], zoom_start=14, tiles='CartoDB positron')
+
     folium.Marker(
         [station_lat, station_lon], 
         popup=f"<b>{station_name} (Bus Depot)</b>", 
@@ -155,102 +167,173 @@ def draw_final_map(routes, station_name, station_lat, station_lon, direction, ou
     for idx, route in enumerate(routes):
         color = route_colors[idx % len(route_colors)]
         bus_name = f"{direction} Route {idx + 1}"
-        route_coords = [[station_lat, station_lon]]
         total_load = sum(stop['load'] for stop in route)
         
+        full_route_coords = []
+        
+        # 1. Path from Station to First Stop
+        first_stop = route[0]
+        full_route_coords.extend(get_street_path(G, station_lat, station_lon, first_stop['lat'], first_stop['lon']))
+        
+        # 2. Path between all Virtual Stops
+        for i in range(len(route) - 1):
+            stop1, stop2 = route[i], route[i+1]
+            full_route_coords.extend(get_street_path(G, stop1['lat'], stop1['lon'], stop2['lat'], stop2['lon']))
+            
+        # 3. Path from Last Stop back to Station
+        last_stop = route[-1]
+        full_route_coords.extend(get_street_path(G, last_stop['lat'], last_stop['lon'], station_lat, station_lon))
+
+        # Draw the virtual stops as dots
         for stop in route:
-            route_coords.append([stop['lat'], stop['lon']])
             folium.CircleMarker(
                 location=[stop['lat'], stop['lon']], radius=7, color=color,
                 fill=True, fill_opacity=0.9, weight=2,
                 tooltip=f"<b>{bus_name}</b><br>Demand: {stop['load']} pax"
             ).add_to(m)
 
-        route_coords.append([station_lat, station_lon]) 
-        
+        # Draw the true physical path
         folium.PolyLine(
-            locations=route_coords, color=color, weight=4, opacity=0.8,
+            locations=full_route_coords, color=color, weight=5, opacity=0.8,
             tooltip=f"{bus_name} (Total Load: {total_load} pax)"
         ).add_to(m)
 
     m.save(output_filename)
-
 # ==========================================
 # 5. THE MULTI-DEPOT ORCHESTRATOR
 # ==========================================
+# if __name__ == "__main__":
+#     print("==========================================")
+#     print("INITIALIZING BI-DIRECTIONAL AI ROUTING ENGINE")
+#     print("==========================================\n")
+
+#     # The mathematically proven hyperparameters
+#     BUS_CAPACITY = 30
+#     GA_POPULATION = 100
+#     GA_GENERATIONS = 150
+
+#     STATIONS = {
+#         "Andheri": (19.1197, 72.8464),
+#         "Bandra": (19.0544, 72.8402),
+#         "Borivali": (19.2291, 72.8573),
+#         "Goregaon": (19.1645, 72.8495),
+#         "Churchgate": (18.9322, 72.8264)
+#     }
+
+#     # Load the verified matrices from Step 1
+#     feeder_df = pd.read_csv("./demand_matrices/first_mile_feeder_demand.csv")
+#     dispersal_df = pd.read_csv("./demand_matrices/last_mile_dispersal_demand.csv")
+
+#     output_dir = "./final_fleet_maps"
+#     os.makedirs(output_dir, exist_ok=True)
+
+#     # --- LOAD THE MUMBAI STREET GRAPH ONCE ---
+#     print("Loading Mumbai Street Network...")
+#     G = oxr.load_or_download_mumbai_graph()
+#     total_buses_dispatched = 0
+#     total_system_mileage = 0
+
+#     for station_name, (s_lat, s_lon) in STATIONS.items():
+#         print(f"--- Processing {station_name} Station ---")
+        
+#         # --- 1. MORNING FEEDER FLEET ---
+#         station_feeder = feeder_df[feeder_df['station'] == station_name]
+#         feeder_stops = generate_virtual_stops(station_feeder, s_lat, s_lon)
+        
+#         if feeder_stops is not None and len(feeder_stops) > 0:
+#             routes, dist = run_genetic_ai(feeder_stops, s_lat, s_lon, BUS_CAPACITY, GA_POPULATION, GA_GENERATIONS)
+#             total_buses_dispatched += len(routes)
+#             total_system_mileage += dist
+            
+#             map_name = os.path.join(output_dir, f"{station_name}_Feeder_Fleet.html")
+#             draw_final_map(routes, station_name, s_lat, s_lon, "Morning Feeder", map_name)
+#             print(f"  [+] Morning Feeder: Dispatched {len(routes)} buses ({round(dist/1000, 1)} km). Map saved.")
+#         else:
+#             print("  [-] Morning Feeder: Insufficient demand.")
+
+#         # --- 2. EVENING DISPERSAL FLEET ---
+#         station_dispersal = dispersal_df[dispersal_df['station'] == station_name]
+#         dispersal_stops = generate_virtual_stops(station_dispersal, s_lat, s_lon)
+        
+#         if dispersal_stops is not None and len(dispersal_stops) > 0:
+#             routes, dist = run_genetic_ai(dispersal_stops, s_lat, s_lon, BUS_CAPACITY, GA_POPULATION, GA_GENERATIONS)
+#             total_buses_dispatched += len(routes)
+#             total_system_mileage += dist
+            
+#             map_name = os.path.join(output_dir, f"{station_name}_Dispersal_Fleet.html")
+#             draw_final_map(routes, station_name, s_lat, s_lon, "Evening Dispersal", map_name)
+#             print(f"  [+] Evening Dispersal: Dispatched {len(routes)} buses ({round(dist/1000, 1)} km). Map saved.")
+#         else:
+#             print("  [-] Evening Dispersal: Insufficient demand.")
+            
+#         print("") # Spacing
+
+#     print("==========================================")
+#     print("CITY-WIDE OPTIMIZATION COMPLETE")
+#     print(f"Total Buses Dispatched: {total_buses_dispatched}")
+#     print(f"Total System Mileage: {round(total_system_mileage/1000, 2)} km")
+#     print("==========================================")
+#     import json
+#     metrics_export = {
+#         "total_buses": total_buses_dispatched,
+#         "total_mileage_km": total_system_mileage / 1000
+#     }
+#     with open("routing_summary.json", "w") as f:
+#         json.dump(metrics_export, f)
+#     print("Exported routing metrics for academic evaluation.")
+
 if __name__ == "__main__":
     print("==========================================")
     print("INITIALIZING BI-DIRECTIONAL AI ROUTING ENGINE")
     print("==========================================\n")
 
-    # The mathematically proven hyperparameters
     BUS_CAPACITY = 30
     GA_POPULATION = 100
     GA_GENERATIONS = 150
 
     STATIONS = {
-        "Andheri": (19.1197, 72.8464),
-        "Bandra": (19.0544, 72.8402),
-        "Borivali": (19.2291, 72.8573),
-        "Goregaon": (19.1645, 72.8495),
-        "Churchgate": (18.9322, 72.8264)
+          "Andheri": (19.1197, 72.8464),
+          "Bandra": (19.0544, 72.8402),
+          "Borivali": (19.2291, 72.8573),
+          "Goregaon": (19.1645, 72.8495),
+          "Churchgate": (18.9322, 72.8264)
+        # Add Borivali, Goregaon, Churchgate back in once you test this!
     }
 
-    # Load the verified matrices from Step 1
     feeder_df = pd.read_csv("./demand_matrices/first_mile_feeder_demand.csv")
     dispersal_df = pd.read_csv("./demand_matrices/last_mile_dispersal_demand.csv")
 
     output_dir = "./final_fleet_maps"
     os.makedirs(output_dir, exist_ok=True)
 
+    print("Loading Mumbai Street Network...")
+    G = oxr.load_or_download_mumbai_graph()
     total_buses_dispatched = 0
     total_system_mileage = 0
 
     for station_name, (s_lat, s_lon) in STATIONS.items():
-        print(f"--- Processing {station_name} Station ---")
+        print(f"\n--- Processing {station_name} Station ---")
         
-        # --- 1. MORNING FEEDER FLEET ---
         station_feeder = feeder_df[feeder_df['station'] == station_name]
         feeder_stops = generate_virtual_stops(station_feeder, s_lat, s_lon)
         
         if feeder_stops is not None and len(feeder_stops) > 0:
-            routes, dist = run_genetic_ai(feeder_stops, s_lat, s_lon, BUS_CAPACITY, GA_POPULATION, GA_GENERATIONS)
+            routes, dist, _ = run_genetic_ai(G, feeder_stops, s_lat, s_lon, BUS_CAPACITY, GA_POPULATION, GA_GENERATIONS)
             total_buses_dispatched += len(routes)
             total_system_mileage += dist
             
             map_name = os.path.join(output_dir, f"{station_name}_Feeder_Fleet.html")
-            draw_final_map(routes, station_name, s_lat, s_lon, "Morning Feeder", map_name)
+            draw_final_map(G, routes, station_name, s_lat, s_lon, "Morning Feeder", map_name)
             print(f"  [+] Morning Feeder: Dispatched {len(routes)} buses ({round(dist/1000, 1)} km). Map saved.")
-        else:
-            print("  [-] Morning Feeder: Insufficient demand.")
 
-        # --- 2. EVENING DISPERSAL FLEET ---
         station_dispersal = dispersal_df[dispersal_df['station'] == station_name]
         dispersal_stops = generate_virtual_stops(station_dispersal, s_lat, s_lon)
         
         if dispersal_stops is not None and len(dispersal_stops) > 0:
-            routes, dist = run_genetic_ai(dispersal_stops, s_lat, s_lon, BUS_CAPACITY, GA_POPULATION, GA_GENERATIONS)
+            routes, dist, _ = run_genetic_ai(G, dispersal_stops, s_lat, s_lon, BUS_CAPACITY, GA_POPULATION, GA_GENERATIONS)
             total_buses_dispatched += len(routes)
             total_system_mileage += dist
             
             map_name = os.path.join(output_dir, f"{station_name}_Dispersal_Fleet.html")
-            draw_final_map(routes, station_name, s_lat, s_lon, "Evening Dispersal", map_name)
+            draw_final_map(G, routes, station_name, s_lat, s_lon, "Evening Dispersal", map_name)
             print(f"  [+] Evening Dispersal: Dispatched {len(routes)} buses ({round(dist/1000, 1)} km). Map saved.")
-        else:
-            print("  [-] Evening Dispersal: Insufficient demand.")
-            
-        print("") # Spacing
-
-    print("==========================================")
-    print("CITY-WIDE OPTIMIZATION COMPLETE")
-    print(f"Total Buses Dispatched: {total_buses_dispatched}")
-    print(f"Total System Mileage: {round(total_system_mileage/1000, 2)} km")
-    print("==========================================")
-    import json
-    metrics_export = {
-        "total_buses": total_buses_dispatched,
-        "total_mileage_km": total_system_mileage / 1000
-    }
-    with open("routing_summary.json", "w") as f:
-        json.dump(metrics_export, f)
-    print("Exported routing metrics for academic evaluation.")
